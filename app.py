@@ -124,7 +124,9 @@ def get_points(receipt_id):
             points += 6
 
         # Purchase time between 2pm and 4pm exclusive
-        if receipt.purchase_datetime.hour in range(14, 16) and receipt.purchase_datetime.minute > 0:
+        two_pm = receipt.purchase_datetime.replace(hour=14, minute=0, second=0, microsecond=0)
+        four_pm = two_pm.replace(hour=16)
+        if two_pm < receipt.purchase_datetime < four_pm:
             points += 10
         return jsonify(points=points), 200
     return jsonify(message="No receipt found for that ID."), 404
