@@ -14,4 +14,5 @@ docker compose up -d --build
 ```
 
 # Testing
+* The server will be available at ```localhost:5000```
 > **Note**: This app stores data in sessions.
